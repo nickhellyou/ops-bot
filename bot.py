@@ -10,15 +10,15 @@ bot = telebot.TeleBot(TOKEN)
 def start(message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 
-        keyboard.row("🏫 Profil", "👨‍🏫 Guru")
-            keyboard.row("👨‍🎓 Siswa", "📚 Kelas")
-                keyboard.row("📋 Absensi", "🎓 MPLS")
-                    keyboard.row("📄 Surat", "📖 Dapodik")
-                        keyboard.row("💰 BOS", "☎️ Kontak")
+    keyboard.row("🏫 Profil", "👨‍🏫 Guru")
+    keyboard.row("👨‍🎓 Siswa", "📚 Kelas")
+    keyboard.row("📋 Absensi", "🎓 MPLS")
+    keyboard.row("📄 Surat", "📖 Dapodik")
+    keyboard.row("💰 BOS", "☎️ Kontak")
 
-                            bot.send_message(
-                                        message.chat.id,
-                                                "🏫 BOT OPERATOR SDN 1 LANGSE\n\nSilakan pilih menu.",
+     bot.send_message(
+       message.chat.id,
+       "🏫 BOT OPERATOR SDN 1 LANGSE\n\nSilakan pilih menu.",
                                                         reply_markup=keyboard
                                                             )
                             )
