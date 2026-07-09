@@ -1,10 +1,10 @@
-k
-m	mport os
+import os
 import telebot
 from telebot import types
 
 TOKEN = os.getenv("TOKEN")
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
+
 
 def main_keyboard():
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -16,58 +16,118 @@ def main_keyboard():
     kb.row("Agenda", "BOS")
     return kb
 
+
 @bot.message_handler(commands=["start", "help"])
 def start(message):
     bot.send_message(
         message.chat.id,
-        "OPS-BOT SDN 1 LANGSE\n\nSilakan pilih menu.",
+        "<b>OPS-BOT SDN 1 LANGSE</b>\n\nSilakan pilih menu.",
         reply_markup=main_keyboard()
     )
 
-def balas(m, t):
-    bot.reply_to(m, t)
+
+def balas(message, judul, isi):
+    bot.send_message(
+        message.chat.id,
+        f"<b>{judul}</b>\n\n{isi}"
+    )
+
 
 @bot.message_handler(func=lambda m: True)
 def menu(message):
     t = message.text
 
     if t == "Kepala Sekolah":
-        balas(message, "Ahmad Junaedi Fatah, S.Pd. SD.\nSedang dikembangkan.")
+        balas(
+            message,
+            "KEPALA SEKOLAH",
+            "Ahmad Junaedi Fatah, S.Pd.SD\n\nFitur profil sekolah akan dikembangkan."
+        )
 
     elif t == "Guru":
-        balas(message, "Urung di-update lurrr")
+        balas(
+            message,
+            "DATA GURU",
+            "Data guru akan ditampilkan dari database."
+        )
 
     elif t == "Siswa":
-        balas(message, "Ken Zura disit nggo isi-isi")
+        balas(
+            message,
+            "DATA SISWA",
+            "Fitur pencarian siswa akan dikembangkan."
+        )
 
     elif t == "Kelas":
-        balas(message, "fitur ke depan untuk manage perkelas")
+        balas(
+            message,
+            "DATA KELAS",
+            "Manajemen kelas akan dikembangkan."
+        )
 
     elif t == "SPMB":
-        balas(message, "kira-kira penting ora ya?\nSedang dikembangkan.")
+        balas(
+            message,
+            "SPMB",
+            "Pendaftaran murid baru, murid pindahan, persyaratan, dan daftar ulang."
+        )
 
     elif t == "PPDB SMP":
-        balas(message, "kie sing nggawe Pak Eka puyeng wkwkwk\nSedang dikembangkan.")
+        balas(
+            message,
+            "PPDB SMP",
+            "Jalur Domisili, Afirmasi, Prestasi, Persyaratan, dan Jadwal."
+        )
 
     elif t == "Surat":
-        balas(message, "fitur generate semua surat. Tinggal kasih prompt: buat surat tugas diklat untuk Pak Jun. Langsung dibikin sama AI")
+        balas(
+            message,
+            "SURAT",
+            "Generator Surat Tugas, Surat Keterangan, Surat Undangan, dan Nomor Surat."
+        )
 
     elif t == "Dapodik":
-        balas(message, "fitur dapodik berikut link dll")
+        balas(
+            message,
+            "DAPODIK",
+            "Informasi Dapodik, sinkronisasi, dan link penting."
+        )
 
     elif t == "Keuangan":
-        balas(message, "kie jatahe Bu Mar")
+        balas(
+            message,
+            "KEUANGAN",
+            "Dana BOS, Dana Lain-lain, Pemasukan, Pengeluaran, dan Laporan."
+        )
 
     elif t == "Agenda":
-        balas(message, "bisa jadwal lomba, TKA, anbk, dll")
+        balas(
+            message,
+            "AGENDA SEKOLAH",
+            "Jadwal lomba, ANBK, TKA, rapat, dan agenda sekolah."
+        )
 
     elif t == "Tools":
-        balas(message, "kie sing dadi master bot")
+        balas(
+            message,
+            "TOOLS OPERATOR",
+            "BMD\nGenerator Surat\nNomor Surat\nBackup Database\nExport PDF"
+        )
 
     elif t == "BOS":
-        balas(message, "jatahe juragan Bu Puji")
+        balas(
+            message,
+            "DANA BOS",
+            "RKAS, Realisasi, Laporan, dan Berkas BOS."
+        )
 
     else:
-        balas(message, "Silakan pilih menu.")
+        balas(
+            message,
+            "OPS-BOT",
+            "Silakan pilih menu yang tersedia."
+        )
 
+
+print("OPS-BOT SDN 1 LANGSE berjalan...")
 bot.infinity_polling()
