@@ -1,4 +1,5 @@
-import os
+k
+m	mport os
 import telebot
 from telebot import types
 
@@ -11,8 +12,8 @@ def main_keyboard():
     kb.row("Siswa", "Kelas")
     kb.row("SPMB", "PPDB SMP")
     kb.row("Surat", "Dapodik")
-    kb.row("Keuangan", "Agenda")
-    kb.row("Tools", "BOS")
+    kb.row("Keuangan", "Tools")
+    kb.row("Agenda", "BOS")
     return kb
 
 @bot.message_handler(commands=["start", "help"])
@@ -31,46 +32,40 @@ def menu(message):
     t = message.text
 
     if t == "Kepala Sekolah":
-        balas(message, "Menu Kepala Sekolah\nSedang dikembangkan.")
+        balas(message, "Ahmad Junaedi Fatah, S.Pd. SD.\nSedang dikembangkan.")
 
     elif t == "Guru":
-        balas(message, "Menu Guru")
+        balas(message, "Urung di-update lurrr")
 
     elif t == "Siswa":
-        balas(message, "Menu Siswa")
+        balas(message, "Ken Zura disit nggo isi-isi")
 
     elif t == "Kelas":
-        balas(message, "Menu Kelas")
+        balas(message, "fitur ke depan untuk manage perkelas")
 
     elif t == "SPMB":
-        balas(message, "Menu SPMB\nSedang dikembangkan.")
+        balas(message, "kira-kira penting ora ya?\nSedang dikembangkan.")
 
     elif t == "PPDB SMP":
-        balas(message, "Menu PPDB SMP\nSedang dikembangkan.")
+        balas(message, "kie sing nggawe Pak Eka puyeng wkwkwk\nSedang dikembangkan.")
 
     elif t == "Surat":
-        balas(message, "Menu Surat")
+        balas(message, "fitur generate semua surat. Tinggal kasih prompt: buat surat tugas diklat untuk Pak Jun. Langsung dibikin sama AI")
 
     elif t == "Dapodik":
-        balas(message, "Menu Dapodik")
+        balas(message, "fitur dapodik berikut link dll")
 
     elif t == "Keuangan":
-        balas(message, "Menu Keuangan")
+        balas(message, "kie jatahe Bu Mar")
 
     elif t == "Agenda":
-        balas(message, "Agenda Sekolah")
+        balas(message, "bisa jadwal lomba, TKA, anbk, dll")
 
     elif t == "Tools":
-        balas(
-            message,
-            "TOOLS\n"
-            "- BMD\n"
-            "- Generator Surat\n"
-            "- Nomor Surat"
-        )
+        balas(message, "kie sing dadi master bot")
 
     elif t == "BOS":
-        balas(message, "Menu BOS")
+        balas(message, "jatahe juragan Bu Puji")
 
     else:
         balas(message, "Silakan pilih menu.")
