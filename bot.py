@@ -8,25 +8,20 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def start(message):
-    keyboard = types.ReplyKeyboardMarkup(
-                resize_keyboard=True
-                    )
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 
-                        keyboard.row("🏫 Profil", "👨‍🏫 Guru")
-                            keyboard.row("👨‍🎓 Siswa", "📚 Kelas")
-                                keyboard.row("📋 Absensi", "🎓 MPLS")
-                                    keyboard.row("📄 Surat", "📖 Dapodik")
-                                        keyboard.row("💰 BOS", "☎️ Kontak")
+        keyboard.row("🏫 Profil", "👨‍🏫 Guru")
+            keyboard.row("👨‍🎓 Siswa", "📚 Kelas")
+                keyboard.row("📋 Absensi", "🎓 MPLS")
+                    keyboard.row("📄 Surat", "📖 Dapodik")
+                        keyboard.row("💰 BOS", "☎️ Kontak")
 
-                                            bot.send_message(
-                                                        message.chat.id,
-                                                                "🏫 *BOT OPERATOR SDN 1 LANGSE*\n\nSilakan pilih menu.",
-                                                                        parse_mode="Markdown",
-                                                                                reply_markup=keyboard
-                                                                                    )
-                                            )
-    )
-
+                            bot.send_message(
+                                        message.chat.id,
+                                                "🏫 BOT OPERATOR SDN 1 LANGSE\n\nSilakan pilih menu.",
+                                                        reply_markup=keyboard
+                                                            )
+                            )
 
 @bot.message_handler(commands=['kepsek'])
 def kepsek(message):
