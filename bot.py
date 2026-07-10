@@ -229,13 +229,6 @@ def menu(message):
             "RKAS, Realisasi, Laporan, dan Berkas BOS."
         )
 
-    elif t == "Kembali":
-        bot.send_message(
-            message.chat.id,
-            "<b>OPS-BOT SDN 1 LANGSE</b>\n\nSilakan pilih menu.",
-            reply_markup=main_keyboard()
-        )
-
     else:
         balas(
             message,
@@ -243,6 +236,4 @@ def menu(message):
             "Silakan pilih menu yang tersedia."
         )
 
-
-print("Railway dimatikan sementara")
-exit()
+bot.infinity_polling()
