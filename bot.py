@@ -196,5 +196,5 @@ def menu(message):
         )
 
 
-print("OPS-BOT SDN 1 LANGSE berjalan...")
-bot.infinity_polling()
+print("Railway dimatikan sementara")
+exit()
