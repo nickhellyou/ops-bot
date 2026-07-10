@@ -1,6 +1,7 @@
 import os
 import telebot
 from telebot import types
+from openpyxl import load_workbook
 
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN, parse_mode="HTML")
@@ -42,6 +43,53 @@ def balas(message, judul, isi):
         f"<b>{judul}</b>\n\n{isi}"
     )
 
+def daftar_guru():
+    wb = load_workbook("/storage/emulated/0/OPS-BOT/guru.xlsx")
+    ws = wb.active
+
+    hasil = []
+
+    for i, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=1):
+        nama = row[0]
+        jabatan = row[1]
+
+        if nama:
+            hasil.append(
+                f"{i}. {nama}\n"
+                f"   Jabatan : {jabatan}"
+            )
+
+    if hasil:
+        return "\n\n".join(hasil)
+    else:
+        return "Data guru masih kosong."
+
+def daftar_siswa():
+    from openpyxl import load_workbook
+
+    try:
+        wb = load_workbook("/storage/emulated/0/OPS-BOT/siswa.xlsx")
+        ws = wb.active
+
+        hasil = []
+
+        for i, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=1):
+            nama = row[0]
+            kelas = row[1] if len(row) > 1 else ""
+
+            if nama:
+                hasil.append(
+                    f"{i}. {nama}\n"
+                    f"   Kelas : {kelas}"
+                )
+
+        if hasil:
+            return "\n\n".join(hasil)
+        else:
+            return "Data siswa masih kosong."
+
+    except Exception as e:
+        return f"Error membaca data:\n{e}"
 
 def menu_surat(message):
     bot.send_message(
@@ -64,17 +112,17 @@ def menu(message):
 
     elif t == "Guru":
         balas(
-            message,
-            "DATA GURU",
-            "Data guru akan ditampilkan dari database."
-        )
+        message,
+        "DATA GURU",
+        daftar_guru()
+    )
 
     elif t == "Siswa":
         balas(
-            message,
-            "DATA SISWA",
-            "Fitur pencarian siswa akan dikembangkan."
-        )
+        message,
+        "DATA SISWA",
+        daftar_siswa()
+    )
 
     elif t == "Kelas":
         balas(
