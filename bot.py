@@ -16,6 +16,16 @@ def main_keyboard():
     kb.row("Agenda", "BOS")
     return kb
 
+def keyboard_surat():
+    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
+
+    kb.row("Surat Tugas", "Surat Keterangan")
+    kb.row("Surat Undangan", "Nomor Surat")
+    kb.row("Template Surat")
+    kb.row("Kembali")
+
+    return kb
+
 
 @bot.message_handler(commands=["start", "help"])
 def start(message):
@@ -30,6 +40,14 @@ def balas(message, judul, isi):
     bot.send_message(
         message.chat.id,
         f"<b>{judul}</b>\n\n{isi}"
+    )
+
+
+def menu_surat(message):
+    bot.send_message(
+        message.chat.id,
+        "<b>MENU SURAT</b>\n\nSilakan pilih jenis surat.",
+        reply_markup=keyboard_surat()
     )
 
 
@@ -80,11 +98,7 @@ def menu(message):
         )
 
     elif t == "Surat":
-        balas(
-            message,
-            "SURAT",
-            "Generator Surat Tugas, Surat Keterangan, Surat Undangan, dan Nomor Surat."
-        )
+        menu_surat(message)
 
     elif t == "Dapodik":
         balas(
@@ -119,6 +133,13 @@ def menu(message):
             message,
             "DANA BOS",
             "RKAS, Realisasi, Laporan, dan Berkas BOS."
+        )
+
+    elif t == "Kembali":
+        bot.send_message(
+            message.chat.id,
+            "<b>OPS-BOT SDN 1 LANGSE</b>\n\nSilakan pilih menu.",
+            reply_markup=main_keyboard()
         )
 
     else:
