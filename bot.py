@@ -100,6 +100,52 @@ def menu(message):
     elif t == "Surat":
         menu_surat(message)
 
+    elif t == "Surat Tugas":
+        balas(
+            message,
+            "SURAT TUGAS",
+            "Template Surat Tugas\n\nFitur generator surat akan segera tersedia."
+        )
+
+    elif t == "Surat Keterangan":
+        balas(
+            message,
+            "SURAT KETERANGAN",
+            "Template Surat Keterangan\n\nFitur generator surat akan segera tersedia."
+        )
+
+    elif t == "Surat Undangan":
+        balas(
+            message,
+            "SURAT UNDANGAN",
+            "Template Surat Undangan\n\nFitur generator surat akan segera tersedia."
+        )
+
+    elif t == "Nomor Surat":
+        balas(
+            message,
+            "NOMOR SURAT",
+            "Nomor Surat Terakhir:\n001/SDN1-LGS/VII/2026"
+        )
+
+    elif t == "Template Surat":
+        balas(
+            message,
+            "TEMPLATE SURAT",
+            "1. Surat Tugas\n"
+            "2. Surat Keterangan\n"
+            "3. Surat Undangan\n"
+            "4. Surat Izin\n"
+            "5. Surat Pemberitahuan"
+        )
+
+    elif t == "Kembali":
+        bot.send_message(
+            message.chat.id,
+            "<b>OPS-BOT SDN 1 LANGSE</b>\n\nSilakan pilih menu.",
+            reply_markup=main_keyboard()
+        )
+
     elif t == "Dapodik":
         balas(
             message,
