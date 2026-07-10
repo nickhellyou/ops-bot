@@ -44,7 +44,7 @@ def balas(message, judul, isi):
     )
 
 def daftar_guru():
-    wb = load_workbook("/storage/emulated/0/OPS-BOT/guru.xlsx")
+    wb = load_workbook("data/guru.xlsx")
     ws = wb.active
 
     hasil = []
@@ -68,7 +68,7 @@ def daftar_siswa():
     from openpyxl import load_workbook
 
     try:
-        wb = load_workbook("/storage/emulated/0/OPS-BOT/siswa.xlsx")
+        wb = load_workbook("data/siswa.xlsx") 
         ws = wb.active
 
         hasil = []
